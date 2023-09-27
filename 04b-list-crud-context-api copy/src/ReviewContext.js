@@ -2,7 +2,7 @@ import React, { createContext, useState, useEffect } from 'react';
 
 const ReviewContext = createContext();
 
-const base_api_url = 'https://5000-kunxinchor-restaurantre-j9cyrvtujhj.ws-us100.gitpod.io';
+const base_api_url = 'https://kcx-rest-reviews-api.onrender.com/';
 
 const ReviewProvider = (props) => {
   const [reviews, setReviews] = useState([]);
