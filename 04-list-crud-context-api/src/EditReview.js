@@ -1,14 +1,18 @@
 import React, { useContext } from 'react';
 import ReviewForm from './ReviewForm';
 import { ReviewContext } from './ReviewContext';
+import { useParams, useNavigate } from 'react-router-dom';
 
-const EditReview = ({ index, setPage }) => {
+const EditReview = () => {
   const context = useContext(ReviewContext);
+  const {index} = useParams();
+  const navigate = useNavigate();
   const reviewToEdit = context.reviews[index];
 
   const handleSubmit = (updatedReview) => {
     context.updateReview(index, updatedReview);
-    setPage('show');
+    navigate('/');
+ 
   };
 
   return (

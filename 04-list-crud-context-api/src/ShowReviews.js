@@ -1,12 +1,13 @@
 import React, { useContext } from 'react';
 import { ReviewContext } from './ReviewContext';
+import { useNavigate } from 'react-router-dom';
 
-const ShowReviews = ({ setEditIndex, setPage }) => {
+const ShowReviews = () => {
   const context = useContext(ReviewContext);
+  const navigate = useNavigate();
 
   const handleEdit = (index) => {
-    setEditIndex(index);
-    setPage('edit');
+    navigate(`/edit/${index}`)
   };
 
   return (
@@ -23,7 +24,7 @@ const ShowReviews = ({ setEditIndex, setPage }) => {
           </li>
         ))}
       </ul>
-      <button className="btn btn-primary" onClick={() => setPage('add')}>Add Review</button>
+      <button className="btn btn-primary" onClick={() => navigate('/add')}>Add Review</button>
     </div>
   );
 };

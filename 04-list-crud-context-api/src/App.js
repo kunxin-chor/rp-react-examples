@@ -1,26 +1,32 @@
 import React, { useState } from 'react';
+
+// Review Context
 import { ReviewProvider } from './ReviewContext';
+
+// React Router DOM objects
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
+
+// the pages
 import ShowReviews from './ShowReviews';
 import AddReview from './AddReview';
 import EditReview from './EditReview';
+
+// Bootstrap
 import "bootstrap/dist/css/bootstrap.min.css"
 
 const App = () => {
-  const [page, setPage] = useState('show');
-  const [editIndex, setEditIndex] = useState(null);
-
-  const handleEdit = (index) => {
-    setEditIndex(index);
-    setPage('edit');
-  };
-
   return (
     <ReviewProvider>
+      <BrowserRouter>
       <div className="container mt-5">
-        {page === 'show' && <ShowReviews setEditIndex={handleEdit} setPage={setPage} />}
-        {page === 'add' && <AddReview setPage={setPage} />}
-        {page === 'edit' && <EditReview index={editIndex} setPage={setPage} />}
+        <Routes>
+          <Route path="/" element={<ShowReviews />} />
+          <Route path="/add" element={<AddReview />} />
+          <Route path="/edit/:index" element={<EditReview />} />
+        </Routes>
+
       </div>
+      </BrowserRouter>
     </ReviewProvider>
   );
 };
